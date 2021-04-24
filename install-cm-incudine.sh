@@ -171,7 +171,7 @@ ENDING-MESSAGE () {
     NOTIFY ENDING-MESSAGE
     # Put source code page for this script
     echo "For help with the installation script, go to:"
-    echo "INSTALLATION_SCRIPT URL"
+    echo "https://github.com/brandflake11/install-cm-incudine"
     echo
     echo "For help with cm-incudine, go to:"
     echo "https://github.com/ormf/cm-incudine"
