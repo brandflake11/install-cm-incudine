@@ -10,7 +10,7 @@
 
 ** What Operating System is this for?
 
-   install-cm-incudine is specifically designed for Arch-based Linux distros. However, you can easily modify it to work with other Linux distros. Change the $INSTALL_CMD variable at the top of the script, and make sure all uses of $INSTALL_CMD are installing packages that exist on your distribution. You can also just install the packages manually.
+   install-cm-incudine is specifically designed for Arch Linux-based distros. However, you can easily modify it to work with other Linux distros. Change the $INSTALL_CMD variable at the top of the script, and make sure all uses of $INSTALL_CMD are installing packages that exist on your distribution. You can also just install the packages manually.
 
    I would really like to have the script auto-detect which distribution you are on, and install the packages needed for cm-incudine. If you know how to do this and/or know which packages to install for a specific distro, please [[mailto:bthaleproductions@gmail.com][contact me]] or [[https://github.com/brandflake11/install-cm-incudine/pulls][submit a pull request]]. The ideal way would be to have logic in the script that would detect which distro you are on at the start of the script and then use specific packages and package manager calls for the distro in question with some kind of case or if statement. 
 
