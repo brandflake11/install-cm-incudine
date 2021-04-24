@@ -126,7 +126,7 @@ CM-INCUDINE () {
     echo "(cm:rts)"
     echo "And you will be all set."
     echo
-    read -p "Do you want to put this in .sbclrc to autostart cm-incudine when launching sbcl?: [y]es, [n]o" SBCL_QUESTION
+    read -p "Do you want to put this in .sbclrc to autostart cm-incudine when launching sbcl?: [y]es, [n]o: " SBCL_QUESTION
     if [[ $SBCL_QUESTION == 'y' || $SBCL_QUESTION == 'Y' || $SBCL_QUESTION == "yes" ]]
     then
 	echo "(ql:quickload "cm-incudine")" >> ~/.sbclrc
