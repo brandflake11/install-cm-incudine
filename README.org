@@ -1,6 +1,6 @@
 * install-cm-incudine
 
-** How to use
+** How do I use this script?
 
    Make sure you have git installed. You can then do these steps by pasting them into a bash terminal:
 
