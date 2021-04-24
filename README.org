@@ -80,7 +80,7 @@
    
 ** What if I have issues or feedback?
 
-   Please [[mailto:bthaleproductions@gmail.com][contact me]], make a post at [[https://github.com/brandflake11/install-cm-incudine/issues][issues]], or [[https://github.com/brandflake11/install-cm-incudine/pulls][submit a pull request]]. 
+   Please [[mailto:bthaleproductions@gmail.com][contact me]], make a post at [[https://github.com/brandflake11/install-cm-incudine/issues][issues]], or submit a [[https://github.com/brandflake11/install-cm-incudine/pulls][pull request]].
 
 ** License/Notice
 
