@@ -120,19 +120,50 @@ CM-INCUDINE () {
     git clone https://github.com/ormf/cm-fomus.git $QUICKLISP_DIR/cm-fomus
     git clone https://github.com/ormf/fomus.git $QUICKLISP_DIR/fomus
     git clone https://github.com/ormf/cm-utils.git $QUICKLISP_DIR/cm-utils
+    git clone https://github.com/ormf/orm-utils.git $QUICKLISP_DIR/orm-utils
     sbcl --quit --eval '(ql:quickload "cm-incudine")'
     echo "When ready to use cm-incudine, run "
     echo '(ql:quickload "cm-incudine")'
+    echo '(ql:quickload "asdf")'
+    echo '(ql:quickload "fudi")'
+    echo '(ql:quickload "cl-coroutine")'
+    echo "(require 'orm-utils)"
+    echo '(ql:quickload "fomus")'
+    echo "(require 'cm-fomus)"
     echo '(cm:rts)'
     echo "And you will be all set."
     echo
     read -p "Do you want to put this in .sbclrc to autostart cm-incudine when launching sbcl?: [y]es, [n]o: " SBCL_QUESTION
     if [[ $SBCL_QUESTION == 'y' || $SBCL_QUESTION == 'Y' || $SBCL_QUESTION == "yes" ]]
     then
-	echo '(ql:quickload "cm-incudine")' >> ~/.sbclrc
-	echo '(cm:rts)' >> ~/.sbclrc
+	echo '(ql:quickload "cm-incudine")' >> $SBCLRC_LOCATION
+	echo '(ql:quickload "asdf")' >> $SBCLRC_LOCATION
+	echo '(ql:quickload "fudi")' >> $SBCLRC_LOCATION
+	echo '(ql:quickload "cl-coroutine")' >> $SBCLRC_LOCATION
+	echo "(require 'orm-utils)" >> $SBCLRC_LOCATION
+	echo '(ql:quickload "fomus")' >> $SBCLRC_LOCATION
+	echo "(require 'cm-fomus)" >> $SBCLRC_LOCATION
+	echo '(cm:rts)' >> $SBCLRC_LOCATION
     else
 	echo "Not installing to .sbclrc."
+    fi
+}
+
+FOMUS-SETUP () {
+    NOTIFY FOMUS-SETUP
+    $INSTALL_CMD lilypond
+    read -p "Insert the terminal command for your preferred pdf viewer: " PDF_VIEWER
+    PDF_VIEWER_LOCATION=$(which $PDF_VIEWER)
+    echo "Putting $PDF_VIEWER_LOCATION in fomus file for you as preferred editor."
+    read -p "Is this correct? [y]es, [n]o: " FOMUS_QUESTION
+    if [[ $FOMUS_QUESTION == 'y' || $FOMUS_QUESTION == 'Y' || $FOMUS_QUESTION == "yes" ]]
+    then
+	sed -i "s|\/usr\/bin\/evince|$PDF_VIEWER_LOCATION|" fomus
+	echo "The fomus file looks like:"
+	cat fomus
+	cp -i fomus ~/.fomus
+    else
+	echo "Stopping FOMUS-SETUP. Re-run script with only FOMUS-SETUP uncommented to try again."
     fi
 }
 
@@ -157,4 +188,5 @@ QUICKLISP
 SLIME
 INCUDINE
 CM-INCUDINE
+FOMUS-SETUP
 ENDING-MESSAGE
