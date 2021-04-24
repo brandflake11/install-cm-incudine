@@ -19,6 +19,7 @@ NOTIFY () {
 }
 
 SCRIPT_DEPENDENCIES () {
+    NOTIFY SCRIPT_DEPENDENCIES
     $INSTALL_CMD git
 }
 
@@ -45,8 +46,14 @@ JACK () {
 # Pro-audio on Arch can optionally be installed. It can make installing cm-incudine easier, and it's full
 # of great software.
 PRO-AUDIO () {
-    # No need to use $INSTALL_CMD, it's arch only
-    $INSTALL_CMD pro-audio
+    NOTIFY PRO-AUDIO
+    read -p "Do you want to install the pro-audio group? This package contains lots of great audio packages and can enhance your cm-incudine experience. [y]es, [n]o: " PRO_AUDIO_QUESTION
+    if [[ $PRO_AUDIO_QUESTION == 'y' || $PRO_AUDIO_QUESTION == 'Y' || $PRO_AUDIO_QUESTION == "yes" ]]
+    then
+       $INSTALL_CMD pro-audio
+    else
+	echo "Not installing the pro-audio group."
+    fi
 }
     
 QUICKLISP () {
@@ -108,9 +115,13 @@ CM-INCUDINE () {
     then
 	echo "(ql:quickload "cm-incudine")" >> ~/.sbclrc
 	echo "(cm:rts)" >> ~/.sbclrc
+    else
+	echo "Not installing to .sbclrc."
+    fi
 }
 
 ENDING-MESSAGE () {
+    NOTIFY ENDING-MESSAGE
     # Put source code page for this script
     echo "For help with the installation script, go to:"
     echo "INSTALLATION_SCRIPT URL"
@@ -125,7 +136,7 @@ ENDING-MESSAGE () {
 
 EMACS
 SBCL
-#PRO-AUDIO
+PRO-AUDIO
 QUICKLISP
 SLIME
 INCUDINE
