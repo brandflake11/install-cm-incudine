@@ -1,6 +1,22 @@
 #!/bin/bash
 
-# This should be a setup script to go from 0 to hero with everything needed for cm-incudine, including slime and quicklisp
+# install-cm-incudine; A helper script to go from zero to hero with cm-incudine. Includes everything from emacs, to quicklisp, to incudine, to cm-incudine.
+    # Copyright (C) 2021  Brandon Hale
+
+    # This program is free software: you can redistribute it and/or modify
+    # it under the terms of the GNU General Public License as published by
+    # the Free Software Foundation, either version 3 of the License, or
+    # (at your option) any later version.
+
+    # This program is distributed in the hope that it will be useful,
+    # but WITHOUT ANY WARRANTY; without even the implied warranty of
+    # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    # GNU General Public License for more details.
+
+    # You should have received a copy of the GNU General Public License
+    # along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+# This should be a setup script to go from 0 to hero with everything needed for cm-incudine, including emacs, slime, and quicklisp
 
 # This is assuming arch-linux and arch-linux-based distros
 
@@ -132,7 +148,7 @@ ENDING-MESSAGE () {
 
 # The main function calls are below
 # JACK is used inside of INCUDINE
-# Uncomment PRO-AUDIO to install the pro-audio package
+# Comment out anything you don't need.
 
 EMACS
 SBCL

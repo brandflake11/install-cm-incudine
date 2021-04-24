@@ -4,9 +4,13 @@
 
    This script will give you an entire lisp environment from start to finish, as well as setup [[https://github.com/ormf/cm-incudine][cm-incudine]]. It has been made because I was getting tired of installing everything on all of my devices and wanted to make an effortless install method to setup cm-incudine.
 
+** Why make this?
+   
+   Orm Finnendahl helped me personally install cm-incudine, and I wanted to give back to him and the community an easy setup process for cm-incudine.
+
 ** What Operating System is this for?
 
-   install-cm-incudine is specifically designed for arch-based Linux distros. However, you can easily modify it to work with other Linux distros. Change the $INSTALL_CMD variable at the top of the script, and make sure all uses of $INSTALL_CMD are installing packages that exist on your distribution. You can also just install the packages manually.
+   install-cm-incudine is specifically designed for Arch-based Linux distros. However, you can easily modify it to work with other Linux distros. Change the $INSTALL_CMD variable at the top of the script, and make sure all uses of $INSTALL_CMD are installing packages that exist on your distribution. You can also just install the packages manually.
 
    I would really like to have the script auto-detect which distribution you are on, and install the packages needed for cm-incudine. If you know how to do this and/or know which packages to install for a specific distro, please [[mailto:bthaleproductions@gmail.com][contact me]] or [[https://github.com/brandflake11/install-cm-incudine/pulls][submit a pull request]]. The ideal way would be to have logic in the script that would detect which distro you are on at the start of the script and then use specific packages and package manager calls for the distro in question with some kind of case or if statement. 
 
@@ -24,10 +28,58 @@
 
    Nothing should be reinstalled or overwritten with the default script settings.
 
+** Customize the script
+
+   Here are some parts of the script that can be easily customized:
+
+*** Variables
+
+    These variables are called at the top of the script. Simply change them with your text editor of choice to be what you want them to be and they will be used throughout the script.
+   
+   | Variables        | What it does                                                                  |
+   |------------------+-------------------------------------------------------------------------------|
+   | $INSTALL_CMD     | Allows for changing the script's package manager install commands             |
+   | $EMACS_CONFIG    | Specifies where you want to put emacs configurations.                         |
+   | $SBCLRC_LOCATION | Points to where .sbclrc is. SBCL loads the commands from here when it starts. |
+
+*** Run-time Commands
+
+   The last lines of the script are the actual functions the script runs:
+
+   #+BEGIN_SRC bash
+     # Comment out anything you don't need.
+
+     EMACS
+     SBCL
+     PRO-AUDIO
+     QUICKLISP
+     SLIME
+     INCUDINE
+     CM-INCUDINE
+     ENDING-MESSAGE
+   #+END_SRC
+
+   Comment out any of the lines that you don't want the script to install. For example, say you already have emacs, sbcl, slime, and quicklisp installed. Edit the script so it looks like this:
+
+   #+BEGIN_SRC bash
+     # Comment out anything you don't need.
+
+     #EMACS
+     #SBCL
+     PRO-AUDIO
+     #QUICKLISP
+     #SLIME
+     INCUDINE
+     CM-INCUDINE
+     ENDING-MESSAGE
+   #+END_SRC
+
+   The script will then not install or ask you to install emacs, sbcl, quicklisp, and slime. 
+   
 ** What if I have issues or feedback?
 
    Please [[mailto:bthaleproductions@gmail.com][contact me]], make a post at [[https://github.com/brandflake11/install-cm-incudine/issues][issues]], or [[https://github.com/brandflake11/install-cm-incudine/pulls][submit a pull request]]. 
 
 ** License/Notice
 
-   This script's code is all licensed under the GPLv3. The programs this script installs all have their own respective licenses. As a user of this script, you assume all responsibility to and damages or other happenings that may occur.
+   This script's code is all licensed under the [[https://www.gnu.org/licenses/gpl-3.0.en.html][GPLv3]]. The programs this script installs all have their own respective licenses. As a user of this script, you assume all responsibility for damages or other happenings that may occur.
