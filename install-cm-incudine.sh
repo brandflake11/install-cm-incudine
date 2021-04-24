@@ -175,6 +175,7 @@ ENDING-MESSAGE () {
     echo
     echo "For help with cm-incudine, go to:"
     echo "https://github.com/ormf/cm-incudine"
+    echo "Double check your $EMACS_CONFIG and $SBCLRC_LOCATION to make sure there isn't duplicate lisp code in the files."
 }
 
 # The main function calls are below
