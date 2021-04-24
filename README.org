@@ -1,5 +1,18 @@
 * install-cm-incudine
 
+** How to use
+
+   Make sure you have git installed. You can then do these steps by pasting them into a bash terminal:
+
+   #+BEGIN_SRC bash
+     git clone https://github.com/brandflake11/install-cm-incudine.git
+     cd install-cm-incudine
+     chmod +x install-cm-incudine.sh
+     ./install-cm-incudine
+   #+END_SRC
+
+   The installer will then step you through the installation process. There are some questions the script will ask. They can be answered by typing y for yes, or n for no, and then pressing return/enter.
+   
 ** What does this script do?
 
    This script will give you an entire lisp environment from start to finish, as well as setup [[https://github.com/ormf/cm-incudine][cm-incudine]]. It has been made because I was getting tired of installing everything on all of my devices and wanted to make an effortless install method to setup cm-incudine.
