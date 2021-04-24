@@ -56,6 +56,7 @@
      SLIME
      INCUDINE
      CM-INCUDINE
+     FOMUS-SETUP
      ENDING-MESSAGE
    #+END_SRC
 
@@ -71,6 +72,7 @@
      #SLIME
      INCUDINE
      CM-INCUDINE
+     FOMUS-SETUP
      ENDING-MESSAGE
    #+END_SRC
 
