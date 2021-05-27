@@ -127,6 +127,7 @@ CM-INCUDINE () {
     echo '(ql:quickload "asdf")'
     echo '(ql:quickload "fudi")'
     echo '(ql:quickload "cl-coroutine")'
+    echo '(ql:quickload "orm-utils")'
     echo "(require 'orm-utils)"
     echo '(ql:quickload "fomus")'
     echo "(require 'cm-fomus)"
@@ -140,6 +141,7 @@ CM-INCUDINE () {
 	echo '(ql:quickload "asdf")' >> $SBCLRC_LOCATION
 	echo '(ql:quickload "fudi")' >> $SBCLRC_LOCATION
 	echo '(ql:quickload "cl-coroutine")' >> $SBCLRC_LOCATION
+	echo '(ql:quickload "orm-utils")' >> $SBCLRC_LOCATION
 	echo "(require 'orm-utils)" >> $SBCLRC_LOCATION
 	echo '(ql:quickload "fomus")' >> $SBCLRC_LOCATION
 	echo "(require 'cm-fomus)" >> $SBCLRC_LOCATION
