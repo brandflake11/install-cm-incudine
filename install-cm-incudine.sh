@@ -76,7 +76,6 @@ QUICKLISP () {
     NOTIFY QUICKLISP
     curl -O https://beta.quicklisp.org/quicklisp.lisp
     sbcl --script install-quicklisp.lisp
-    echo '(setq inferior-lisp-program "/usr/bin/sbcl")' >> $EMACS_CONFIG
 }
 
 SLIME () {
@@ -84,7 +83,7 @@ SLIME () {
     sbcl --quit --eval '(ql:quickload "quicklisp-slime-helper")'
     echo '  (load (expand-file-name "~/quicklisp/slime-helper.el"))
   ;; Replace "sbcl" with the path to your implementation
-  (setq inferior-lisp-program "sbcl")' >> $EMACS_CONFIG
+  (setq inferior-lisp-program "/usr/bin/sbcl")' >> $EMACS_CONFIG
 }
 
 INCUDINE () {
