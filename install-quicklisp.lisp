@@ -6,4 +6,5 @@
 
 (ql:quickload "vecto")
 
-(ql:add-to-init-file)
+(ql::without-prompting
+    (ql:add-to-init-file))
