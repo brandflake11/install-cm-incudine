@@ -104,6 +104,7 @@ INCUDINE () {
 	# -i to make sure not to overwrite anyone's .incudinerc
 	cp -i incudinerc ~/.incudinerc
 	git clone git://git.code.sf.net/p/incudine/incudine $QUICKLISP_DIR/incudine
+	sbcl --quit --eval '(ql:quickload "cffi")'
 	sbcl --quit --eval '(ql:quickload "incudine")'
     else
 	echo "Skipping the INCUDINE installation and going to next function"
