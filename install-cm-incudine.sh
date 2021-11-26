@@ -18,11 +18,11 @@
 
 # This should be a setup script to go from 0 to hero with everything needed for cm-incudine, including emacs, slime, and quicklisp
 
-# This is assuming arch-linux and arch-linux-based distros
+# This is assuming void-linux and void-linux-based distros
 
 # Change this to what your package manager's install command is.
 # Like, if on debian, change to apt install
-INSTALL_CMD="sudo pacman --needed -S"
+INSTALL_CMD="sudo xbps-install"
 # Set this to where you would like to put emacs configurations
 EMACS_CONFIG=~/.emacs
 # Where the quicklisp directory will be
@@ -41,7 +41,7 @@ SCRIPT_DEPENDENCIES () {
 
 EMACS () {
     NOTIFY EMACS
-    $INSTALL_CMD emacs
+    $INSTALL_CMD emacs-gtk3
 }
 
 SBCL () {
@@ -53,27 +53,29 @@ SBCL () {
 
 JACK () {
     NOTIFY JACK
-    $INSTALL_CMD jack2 realtime-privileges
+    $INSTALL_CMD jack jack-devel rtaudio rtaudio-devel
     echo "Setting your user to the realtime group for pro-audio."
     echo "Make sure to restart in order for it to take effect."
-    sudo usermod -a -G realtime $USER
+    # Setting user to realtime doesn't seem necessary on void
+    # sudo usermod -a -G realtime $USER
 }
     
-# Pro-audio on Arch can optionally be installed. It can make installing cm-incudine easier, and it's full
-# of great software.
-PRO-AUDIO () {
-    NOTIFY PRO-AUDIO
-    read -p "Do you want to install the pro-audio group? This package contains lots of great audio packages and can enhance your cm-incudine experience. [y]es, [n]o: " PRO_AUDIO_QUESTION
-    if [[ $PRO_AUDIO_QUESTION == 'y' || $PRO_AUDIO_QUESTION == 'Y' || $PRO_AUDIO_QUESTION == "yes" ]]
-    then
-       $INSTALL_CMD pro-audio
-    else
-	echo "Not installing the pro-audio group."
-    fi
-}
+# Pro-audio doesn't exist on void linux :(
+# 
+# PRO-AUDIO () {
+#     NOTIFY PRO-AUDIO
+#     read -p "Do you want to install the pro-audio group? This package contains lots of great audio packages and can enhance your cm-incudine experience. [y]es, [n]o: " PRO_AUDIO_QUESTION
+#     if [[ $PRO_AUDIO_QUESTION == 'y' || $PRO_AUDIO_QUESTION == 'Y' || $PRO_AUDIO_QUESTION == "yes" ]]
+#     then
+#        $INSTALL_CMD pro-audio
+#     else
+# 	echo "Not installing the pro-audio group."
+#     fi
+# }
     
 QUICKLISP () {
     NOTIFY QUICKLISP
+    sudo xbps-install curl
     curl -O https://beta.quicklisp.org/quicklisp.lisp
     sbcl --script install-quicklisp.lisp
 }
@@ -90,14 +92,14 @@ INCUDINE () {
     NOTIFY INCUDINE
     echo "Installing INCUDINE dependencies."
     JACK
-    $INSTALL_CMD portaudio portmidi libsndfile fftw gsl clthreads
+    $INSTALL_CMD portaudio portmidi libsndfile libsndfile-devel libfftw fftw fftw-devel gsl gsl-devel clthreads
     echo "To have incudine work, make sure you have installed:"
     echo "pthread, portaudio, jack, portmidi, libsndfile, fftw"
     echo "gnu scientific library (gsl)"
     echo
     echo "Pause the installation if needed by doing Cntrl+z (C-z) and installing the packages needed."
     echo "Then, resume with fg."
-    echo "If you are unsure and are on an arch-based distro, just continue with yes."
+    echo "If you are unsure and on a void-based distro, just continue with yes."
     read -p "Type y to continue. [y]es, [n]o: " QUESTION_RESPONSE
     if [[ $QUESTION_RESPONSE == 'y' || $QUESTION_RESPONSE == 'Y' || $QUESTION_RESPONSE == "yes" ]]
     then
@@ -184,12 +186,11 @@ ENDING-MESSAGE () {
 # JACK is used inside of INCUDINE
 # Comment out anything you don't need.
 
-EMACS
-SBCL
-PRO-AUDIO
-QUICKLISP
-SLIME
+# EMACS
+# SBCL
+# QUICKLISP
+# SLIME
 INCUDINE
 CM-INCUDINE
-FOMUS-SETUP
-ENDING-MESSAGE
+# FOMUS-SETUP
+# ENDING-MESSAGE
